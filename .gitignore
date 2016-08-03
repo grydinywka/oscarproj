@@ -1,0 +1,7 @@
+*.pyc
+*~
+*.egg-info
+*.mo
+*.egg
+db.sqlite3
+solr-4.7.2

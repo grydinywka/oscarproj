@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
-    # 'compressor',
+    'compressor',
     'widget_tweaks',
 ] + get_core_apps()
 
@@ -98,11 +98,11 @@ WSGI_APPLICATION = 'fishshop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'fishshop_db',
+        'USER': 'fishshop_db_user',
+        'PASSWORD': 'fishshop_db_user',
+        'HOST': 'localhost',
         'PORT': '',
         'ATOMIC_REQUESTS': True,
     }
@@ -113,7 +113,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -147,3 +147,14 @@ HAYSTACK_CONNECTIONS = {
         # 'INCLUDE_SPELLING': True,
     },
 }
+
+OSCAR_INITIAL_ORDER_STATUS = 'Pending'
+OSCAR_INITIAL_LINE_STATUS = 'Pending'
+OSCAR_ORDER_STATUS_PIPELINE = {
+    'Pending': ('Being processed', 'Cancelled',),
+    'Being processed': ('Processed', 'Cancelled',),
+    'Cancelled': (),
+}
+
+OSCAR_SHOP_NAME = 'FISH SHOP'
+OSCAR_DEFAULT_CURRENCY = 'UAH'

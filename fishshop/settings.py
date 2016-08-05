@@ -114,6 +114,9 @@ DATABASES = {
     }
 }
 
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+
 # Includes all languages that have >50% coverage in Transifex
 # Taken from Django's default setting for LANGUAGES
 gettext_noop = lambda s: s
@@ -167,6 +170,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+# Simplified static file serving. # https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+ # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+PORTAL_URL = 'http://localhost:8000'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')

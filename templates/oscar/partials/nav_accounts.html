@@ -1,0 +1,79 @@
+<!-- Custom template -->
+
+{% load i18n %}
+
+<div id="top_page" class="navbar navbar-default navbar-static-top accounts">
+    {# This is used in mobile view #}
+    <div class="navbar-header">
+        <a class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target=".account-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+    </div>
+
+    <div class="navbar-collapse account-collapse collapse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" class="contacts">
+                        <i class="icon-phone icon-large"></i> Call Us:+84 987 654 321 |
+                    </a>
+
+                    <a href="#" class="contacts">
+                        <i class="icon-envelope icon-large"></i></span> Email:support@spaceship.com
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav" id="center-navbar">
+                <li class="active"><a class="active">HOME</a></li>
+                <li><a>SHOP</a></li>
+                <li><a>FAVOURITES</a></li>
+                <li><a>ABOUT</a></li>
+                <li><a>BLOG</a></li>
+                <li><a>CONTACTS</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li>
+                        {% if num_unread_notifications > 0 %}
+                            {# If user has new notifications - we change account link to go to inbox #}
+                            <a href="{% url 'customer:notifications-inbox' %}">
+                                <i class="icon-user"></i>
+                                {% trans "Account" %}
+                                <span class="label label-important">{{ num_unread_notifications }}</span>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'customer:summary' %}"><i class="icon-user"></i> {% trans "Account" %}</a>
+                        {% endif %}
+                    </li>
+
+                    <li><a id="logout_link" href="{% url 'customer:logout' %}"><i class="icon-signout"></i> {% trans "Logout" %} |</a></li>
+                {% else %}
+                    <li><a id="login_link" href="{% url 'customer:login' %}"><i class="icon-lock icon-large"></i>
+ {% trans "Login" %}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="sub_top_page" class="navbar navbar-default navbar-static-top accounts">
+        <div class="container-fluid">
+            <div class="col-" ></div>
+            <a class="navbar-brand" href="#">SPACESHIP E-COMMERCE STORE</a>
+            <ul class="nav navbar-nav">
+                <li class="active"><a class="active">HOME</a></li>
+                <li><a>EJECTOR SEATS</a></li>
+                <li><a>SHIELDS</a></li>
+                <li><a>BLASTERS</a></li>
+                <li><a>ENGINES</a></li>
+                <li><a>THRUSTERS</a></li>
+                <li><a>MINNING DRILS</a></li>
+                <li><a>MORE</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                SHOPPING CART
+            </ul>
+        </div>
+</div>

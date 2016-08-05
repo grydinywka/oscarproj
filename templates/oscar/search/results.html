@@ -1,0 +1,9 @@
+{% extends "oscar/search/results.html" %}
+
+{% load i18n %}
+
+{% block headertext %}
+    {% blocktrans with q=query %}
+        Products matching2 "{{ q }}"
+    {% endblocktrans %}
+{% endblock %}

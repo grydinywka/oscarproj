@@ -45,12 +45,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'compressor',
+
     'widget_tweaks',
+
+    # Debug toolbar + extensions
+    'debug_toolbar',
 ] + get_core_apps()
 
 SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,7 +75,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates/oscar'),
             OSCAR_MAIN_TEMPLATE_DIR
         ],
         'APP_DIRS': True,
@@ -108,12 +114,43 @@ DATABASES = {
     }
 }
 
+# Includes all languages that have >50% coverage in Transifex
+# Taken from Django's default setting for LANGUAGES
+gettext_noop = lambda s: s
+LANGUAGES = (
+    ('ar', gettext_noop('Arabic')),
+    ('ca', gettext_noop('Catalan')),
+    ('cs', gettext_noop('Czech')),
+    ('da', gettext_noop('Danish')),
+    ('de', gettext_noop('German')),
+    ('en-gb', gettext_noop('British English')),
+    ('el', gettext_noop('Greek')),
+    ('es', gettext_noop('Spanish')),
+    ('fi', gettext_noop('Finnish')),
+    ('fr', gettext_noop('French')),
+    ('it', gettext_noop('Italian')),
+    ('ko', gettext_noop('Korean')),
+    ('nl', gettext_noop('Dutch')),
+    ('pl', gettext_noop('Polish')),
+    ('pt', gettext_noop('Portuguese')),
+    ('pt-br', gettext_noop('Brazilian Portuguese')),
+    ('ro', gettext_noop('Romanian')),
+    ('ru', gettext_noop('Russian')),
+    ('sk', gettext_noop('Slovak')),
+    ('uk', gettext_noop('Ukrainian')),
+    ('zh-cn', gettext_noop('Simplified Chinese')),
+)
+
+LOCALE_PATHS = [
+    '/data/work/virtualenvs/keyua/oscarproj/lib/python2.7/site-packages/oscar/locale'
+]
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
-TIME_ZONE = 'Europe/Kiev'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -148,6 +185,29 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
+# =============
+# Debug Toolbar
+# =============
+
+# Implicit setup can often lead to problems with circular imports, so we
+# explicitly wire up the toolbar
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+INTERNAL_IPS = ['127.0.0.1', '::1']
+
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
 OSCAR_INITIAL_LINE_STATUS = 'Pending'
 OSCAR_ORDER_STATUS_PIPELINE = {
@@ -156,5 +216,5 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Cancelled': (),
 }
 
-OSCAR_SHOP_NAME = 'FISH SHOP'
+OSCAR_SHOP_NAME = 'SPACESHIP E-COMMERCE STORE'
 OSCAR_DEFAULT_CURRENCY = 'UAH'

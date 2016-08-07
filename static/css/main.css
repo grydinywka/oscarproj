@@ -1,5 +1,9 @@
 /* main css file */
 
+body {
+    margin: 5px 20px;
+}
+
 .navbar #center-navbar {
     display: inline-block;
     float: none;
@@ -13,6 +17,55 @@
     display: inline-block !important;
     padding-right: 0 !important;
     padding-left: 0 !important;
+}
+
+#input-div {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+form #input-div {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#input-div span {
+    background-color: white;
+    border-width: 0;
+    width: 10px;
+}
+
+#input-div input {
+    border-width: 0;
+}
+
+#shopping-cart, #spaceship-brand {
+    height: 100%;
+    padding-right: 0;
+    box-sizing: border-box;;
+}
+
+#shopping-cart {
+    padding-left: 0;
+}
+
+#shopping-cart a {
+    padding-right: 0;
+    padding-left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#spaceship-brand a {
+    padding-left: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+ul#sub-bar {
+
 }
 
 * {

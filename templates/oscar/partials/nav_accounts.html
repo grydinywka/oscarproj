@@ -1,6 +1,7 @@
 <!-- Custom template -->
 
 {% load i18n %}
+{% load static from staticfiles %}
 
 <div id="top_page" class="navbar navbar-default navbar-static-top accounts">
     {# This is used in mobile view #}
@@ -21,7 +22,7 @@
                     </a>
 
                     <a href="#" class="contacts">
-                        <i class="icon-envelope icon-large"></i></span> Email:support@spaceship.com
+                        <i class="icon-envelope icon-large"></i> Email:support@spaceship.com
                     </a>
                 </li>
             </ul>
@@ -58,22 +59,57 @@
     </div>
 </div>
 
-<div id="sub_top_page" class="navbar navbar-default navbar-static-top accounts">
-        <div class="container-fluid">
-            <div class="col-" ></div>
-            <a class="navbar-brand" href="#">SPACESHIP E-COMMERCE STORE</a>
-            <ul class="nav navbar-nav">
-                <li class="active"><a class="active">HOME</a></li>
-                <li><a>EJECTOR SEATS</a></li>
-                <li><a>SHIELDS</a></li>
-                <li><a>BLASTERS</a></li>
-                <li><a>ENGINES</a></li>
-                <li><a>THRUSTERS</a></li>
-                <li><a>MINNING DRILS</a></li>
-                <li><a>MORE</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                SHOPPING CART
-            </ul>
-        </div>
-</div>
+<!--<div class="navbar navbar-default navbar-static-top accounts">-->
+        <!--<div class="container-fluid">-->
+            <!--<div class="nav-row">-->
+                <!--<ul class="nav navbar-nav" id="sub-bar">-->
+                    <!--<li class="nav-item col-md-2 col-xs-12" id="spaceship-brand">-->
+                        <!--<a class="navbar-brand text-left" href="#">SPACESHIP E-COMMERCE STORE</a>-->
+                    <!--</li>-->
+
+                    <!--<li class="nav-item col-md-9 col-xs-12">-->
+                        <!--<div class="nav-row">-->
+                            <!--<ul class="nav navbar-nav">-->
+                                <!--<li class="active"><a>EJECTOR SEATS</a></li>-->
+                                <!--<li><a>SHIELDS</a></li>-->
+                                <!--<li><a>BLASTERS</a></li>-->
+                                <!--<li><a>ENGINES</a></li>-->
+                                <!--<li><a>THRUSTERS</a></li>-->
+                                <!--<li><a>MINNING DRILS</a></li>-->
+                                <!--<li><a>MORE</a></li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                        <!--<div class="nav-row">-->
+                                    <!--<form class="form-inline" role="form">-->
+                                        <!--<div class="input-group" id="input-div">-->
+                                            <!--<span class="input-group-addon"><i class="icon-search"></i></span>-->
+                                            <!--<input type="search" class="form-control" id="search-id"-->
+                                                   <!--placeholder="Type to search">-->
+                                            <!--&lt;!&ndash;<span class="input-group-btn">&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<button class="btn btn-secondary" type="button">Go!</button>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                                        <!--</div>-->
+                                    <!--</form>-->
+                        <!--</div>-->
+                    <!--</li>-->
+
+                    <!--<li class="nav-item col-md-1 col-xs-12" id="shopping-cart">-->
+
+
+
+                        <!--<a class="text-right" href="#"><i class="fa fa-shopping-bag fa-3x" aria-hidden="true">0-->
+                        <!--</i>SHOPPING CART</a>-->
+                    <!--</li>-->
+
+                <!--</ul>-->
+
+            <!--</div>-->
+        <!--</div>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+    <!--<div class="row">-->
+        <!--<img src="{% static 'img/01.png' %}">-->
+    <!--</div>-->
+<!--</div>-->
+

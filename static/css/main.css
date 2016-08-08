@@ -9,6 +9,11 @@ body {
     float: none;
 }
 
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .navbar .container-fluid {
     text-align: center;
 }
@@ -64,8 +69,120 @@ form #input-div {
     box-sizing: border-box;
 }
 
-ul#sub-bar {
+#price-badge {
+    background-color: red;
+}
 
+.container {
+    width: 100%;
+}
+
+#info {
+    margin: 50px 0;
+}
+
+.square-list {
+    list-style-type: square;
+}
+
+.square-list li {
+    margin: 10px 0;
+}
+
+.square-list {
+    padding-left: 12px;
+}
+
+.my_i {
+    width: 20px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.post-content {
+    top: 10px;
+    left: 200px;
+    position: absolute;
+
+}
+.post-content * {
+    color: white;
+}
+
+.thumbnail {
+    position: relative;
+}
+
+.button-link, .button-link:hover {
+    border: 2px solid;
+    color: white;
+    text-decoration: none;
+}
+
+div.parent-btn-link {
+    margin-top: 50px;
+}
+
+.line-left {
+    width:50px;
+    margin-bottom: 50px;
+}
+.line-left hr {
+    border: 2px solid white;
+
+}
+
+/* Cauroosel */
+.left-right {
+    bottom: 20px;
+    left: 90%;
+    position: absolute;
+    /* color: white; */
+}
+/*
+.right {
+    bottom: 20px;
+    right: 0px;
+    position: absolute;
+    /* color: white;*/
+} */
+
+.item img {
+    position: relative;
+}
+
+.carousel-indicators {
+    bottom: 0px;
+    left: 90%;
+    list-style: outside none none;
+    margin-left: -30%;
+    padding-left: 0;
+    position: absolute;
+    text-align: center;
+    width: 60%;
+    z-index: 15;
+}
+
+.carousel-indicators li {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid black;
+    border-radius: 0px;
+    cursor: pointer;
+    display: inline-block;
+    height: 5px;
+    margin: 1px;
+    text-indent: -999px;
+    width: 10px;
+}
+
+.carousel-indicators .active {
+    background-color: black;
+    height: 5px;
+    margin: 0;
+    width: 12px;
 }
 
 * {

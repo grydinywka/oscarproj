@@ -1,0 +1,22 @@
+{% extends "front_end/template_base.html" %}
+{% load static from staticfiles %}
+
+{% block navbar %}{% endblock %}
+
+{% block subnavbar %}{% endblock %}
+
+{% block content %}
+	<ul>
+		<li>
+			<a href="{% url 'front-end' 1 %}" class="lead">Template #1</a>
+		</li>
+		<li>
+			<a href="{% url 'front-end' 2 %}" class="lead">Template #2</a>
+		</li>
+	</ul>
+
+
+{% endblock %}
+
+{% block info %}{% endblock %}
+{% block footer %}{% endblock %}

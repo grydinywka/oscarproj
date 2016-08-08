@@ -101,13 +101,10 @@
 
 
                             <a class="text-right" href="{% url 'basket:summary' %}">
-                                <i class="fa fa-shopping-bag fa-3x" aria-hidden="true">
-                                </i>
-                                {% if request.basket.is_tax_known %}
-                                    {{ request.basket.total_incl_tax|currency:request.basket.currency }}
-                                {% else %}
-                                    {{ request.basket.total_excl_tax|currency:request.basket.currency }}
-                                {% endif %}
+                                <i class="fa fa-shopping-bag fa-3x" aria-hidden="true"></i>
+                                <span class="badge" id="price-badge">
+                                    {{ request.basket.num_items }}
+                                </span>
                                 SHOPPING CART
                             </a>
                         </li>
@@ -119,4 +116,3 @@
         </div>
     </div>
 </div><!-- /navbar -->
-

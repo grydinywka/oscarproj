@@ -27,6 +27,11 @@
             {% include "partials/nav_primary.html" %}
         {% endblock %}
 
+    {# show in home page #}
+        {% block show_in_home %}
+            {% include "catalogue/products.html" %}
+        {% endblock %}
+
     {# Main content of page - other layout templates may override this block #}
     {% block content_wrapper %}
         <div class="container-fluid page">

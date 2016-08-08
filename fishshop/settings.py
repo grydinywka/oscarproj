@@ -44,13 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
+    'frontend',
     'compressor',
 
     'widget_tweaks',
 
     # Debug toolbar + extensions
     'debug_toolbar',
-] + get_core_apps()
+] + get_core_apps(['promotions'])
 
 SITE_ID = 1
 
@@ -76,6 +77,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates/oscar'),
+            os.path.join(BASE_DIR, 'templates'),
             OSCAR_MAIN_TEMPLATE_DIR
         ],
         'APP_DIRS': True,
@@ -227,4 +229,4 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 }
 
 OSCAR_SHOP_NAME = 'SPACESHIP E-COMMERCE STORE'
-OSCAR_DEFAULT_CURRENCY = 'UAH'
+OSCAR_DEFAULT_CURRENCY = 'GBP'

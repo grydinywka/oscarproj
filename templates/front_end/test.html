@@ -1,0 +1,238 @@
+{% load i18n %}
+{% load static from staticfiles %}
+{% load currency_filters %}
+{% load category_tags %}
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<title>FrontEnd {% block meta_title %}{% endblock meta_title %}</title>
+		<meta name="description"
+			  value='App for chat' >
+		<meta name="viewport" content="width=device-width, initial-scale=1" >
+
+		<!-- Style Section -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+	</head>
+
+	<body>
+        <div class="container">
+            {% block navbar %}
+                <div id="top_page" class="navbar navbar-default navbar-static-top accounts">
+                    {# This is used in mobile view #}
+                    <div class="navbar-header">
+                        <a class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target=".account-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                    </div>
+
+                    <div class="navbar-collapse account-collapse collapse">
+                        <div class="container-fluid">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="#" class="contacts">
+                                        <i class="fa fa-phone fa-lg" aria-hidden="true"></i> Call Us:+84 987 654 321 |
+                                    </a>
+
+                                    <a href="#" class="contacts">
+                                        <i class="fa fa-envelope fa-lg" aria-hidden="true"></i> Email:support@spaceship.com
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav" id="center-navbar">
+                                <li class="active"><a class="active">HOME</a></li>
+                                <li><a>SHOP</a></li>
+                                <li><a>FAVOURITES</a></li>
+                                <li><a>ABOUT</a></li>
+                                <li><a>BLOG</a></li>
+                                <li><a>CONTACTS</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                {% if user.is_authenticated %}
+                                    <li>
+                                        {% if num_unread_notifications > 0 %}
+                                            {# If user has new notifications - we change account link to go to inbox #}
+                                            <a href="{% url 'customer:notifications-inbox' %}">
+                                                <i class="icon-user"></i>
+                                                {% trans "Account" %}
+                                                <span class="label label-important">{{ num_unread_notifications }}</span>
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'customer:summary' %}"><i class="icon-user"></i> {% trans "Account" %}</a>
+                                        {% endif %}
+                                    </li>
+
+                                    <li><a id="logout_link" href="{% url 'customer:logout' %}"><i class="icon-signout"></i> {% trans "Logout" %}</a></li>
+                                {% else %}
+                                    <li><a id="login_link" href="{% url 'customer:login' %}">
+                                        <i class="icon-lock icon-large"></i>
+                                        <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                        {% trans "Login" %}</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+
+            {% block subnavbar %}
+                <div class="navbar primary navbar-static-top navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header pull-right">
+                            {# This is used in mobile view #}
+                            <a class="navbar-toggle" data-toggle="collapse" data-target=".primary-collapse">
+                                <span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </span>
+                            </a>
+                        </div>
+
+                        <a class="btn btn-default navbar-btn btn-cart navbar-right visible-xs-inline-block" href="{% url 'basket:summary' %}">
+                            <i class="icon-shopping-cart"></i>
+                            {% trans "Basket" %}
+                            {% if not request.basket.is_empty %}
+                                {% if request.basket.is_tax_known %}
+                                    {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}
+                                        Total: {{ total }}
+                                    {% endblocktrans %}
+                                {% else %}
+                                    {% blocktrans with total=request.basket.total_excl_tax|currency:request.basket.currency %}
+                                        Total: {{ total }}
+                                    {% endblocktrans %}
+                                {% endif %}
+                            {% endif %}
+                        </a>
+
+                        <div class="navbar-collapse primary-collapse collapse">
+                            <div class="container-fluid">
+                                <div class="nav-row">
+                                    <ul class="nav navbar-nav" id="sub-bar">
+                                        <li class="nav-item col-lg-2 col-xs-12" id="spaceship-brand">
+                                            <a class="navbar-brand text-left" href="{{ homepage_url }}">{{ shop_name }}</a><small> {{ shop_tagline }}</small>
+                                        </li>
+
+                                        <li class="nav-item col-lg-9 col-xs-12">
+                                            <div class="nav-row">
+                                                <ul class="nav navbar-nav">
+                                                    <li class="active"><a>EJECTOR SEATS</a></li>
+                                                    <li><a>SHIELDS</a></li>
+                                                    <li><a>BLASTERS</a></li>
+                                                    <li><a>ENGINES</a></li>
+                                                    <li><a>THRUSTERS</a></li>
+                                                    <li><a>MINNING DRILS</a></li>
+                                                    <li><a>MORE</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="nav-row">
+                                                <form class="form-inline" role="form">
+                                                    <div class="input-group" id="input-div">
+                                                        <span class="input-group-addon"><i class="fa fa-search"
+                                                                                           aria-hidden="true"></i></span>
+                                                        <input type="search" class="form-control" id="search-id"
+                                                               placeholder="Type to search">
+                                                        <!--<span class="input-group-btn">-->
+                                                            <!--<button class="btn btn-secondary" type="button">Go!</button>-->
+                                                        <!--</span>-->
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </li>
+
+                                        <li class="nav-item col-lg-1 col-xs-12" id="shopping-cart">
+
+
+
+                                            <a class="text-right" href="{% url 'basket:summary' %}">
+                                                <i class="fa fa-shopping-bag fa-3x" aria-hidden="true"></i>
+                                                <span class="badge" id="price-badge">
+                                                    {{ request.basket.num_items }}
+                                                </span>
+                                                SHOPPING CART
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /navbar -->
+            {% endblock %}
+
+            {% block content %}
+                <p class="lead">TemplateBase</p>
+            {% endblock %}
+
+            <div class="row" id="info">
+                {% block info %}
+                <div class="col-md-3">
+				    <p>SPACESHIP<br>E-COMMERCE<br>STORE</p>
+                    <p>
+                        Logancee is a premium magento theme. Best choice for your online store.
+                        Let purchase it to enjoy now.
+                    </p>
+				</div>
+                <div class="col-md-3">
+				    <p>INFORMATION</p>
+                    <p>
+                        Logancee is a premium magento theme. Best choice for your online store.
+                        Let purchase it to enjoy now.
+                    </p>
+				</div>
+                <div class="col-md-3">
+				    <p>CUSTOMER CARE</p>
+                    <p>
+                        Logancee is a premium magento theme. Best choice for your online store.
+                        Let purchase it to enjoy now.
+                    </p>
+				</div>
+                <div class="col-md-3">
+				    <p>CONTACT US</p>
+                    <p>
+                        Logancee is a premium magento theme. Best choice for your online store.
+                        Let purchase it to enjoy now.
+                    </p>
+				</div>
+
+                {% endblock %}
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="container">
+            <div class="row" id="footer">
+                <div class="col-xs-12">
+				{% block footer %}
+
+					<p class="text-center">&copy; 2016 <strong>TypoStore.</strong> All Rights Reserved.</p>
+				{% endblock footer %}
+				</div>
+            </div>
+        </div>
+		<!-- JavaScript Section -->
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js" type="text/javascript"></script>
+        <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+		<script src="https://cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/a22aea68cd.js"></script>
+		{% block extra_java_script %}{% endblock %}
+	</body>
+
+</html>

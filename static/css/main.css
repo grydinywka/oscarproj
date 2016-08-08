@@ -103,8 +103,8 @@ form #input-div {
 }
 
 .post-content {
-    top: 10px;
-    left: 200px;
+    top: 10%;
+    left: 20%;
     position: absolute;
 
 }
@@ -175,14 +175,20 @@ div.parent-btn-link {
     height: 5px;
     margin: 1px;
     text-indent: -999px;
-    width: 10px;
+    width: 12px;
 }
 
 .carousel-indicators .active {
     background-color: black;
     height: 5px;
     margin: 0;
-    width: 12px;
+    width: 15px;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
 }
 
 * {

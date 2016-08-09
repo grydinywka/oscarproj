@@ -1,0 +1,56 @@
+/* Cauroosel */
+.left-right {
+    bottom: 20px;
+    left: 70%;
+    position: absolute;
+    text-align: center;
+    z-index: 99;
+}
+
+.right, .left {
+    color: white;
+}
+
+.left-right a {
+
+}
+
+.item img {
+    position: relative;
+}
+
+.carousel-indicators {
+    bottom: 0px;
+    left: 90%;
+    list-style: outside none none;
+    margin-left: 0%;
+    padding-left: 0;
+    position: static;
+    text-align: center;
+    width: 100px;
+}
+
+.carousel-indicators li {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid white;
+    border-radius: 0px;
+    cursor: pointer;
+    display: inline-block;
+    height: 8px;
+    margin: 0px;
+    text-indent: -999px;
+    width: 20px;
+}
+
+.carousel-indicators .active {
+    background-color: white;
+    height: 8px;
+    margin: 0;
+    width: 20px;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}

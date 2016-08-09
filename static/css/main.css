@@ -1,7 +1,19 @@
+@import 'carousel_img.css';
+
 /* main css file */
 
 body {
     margin: 5px 20px;
+}
+
+/* top_page navbar */
+#top_page {
+    background-color: white;
+}
+
+#top_page1 {
+    box-shadow: 0 0;
+    border-bottom: 2px solid grey;
 }
 
 .navbar #center-navbar {
@@ -69,8 +81,19 @@ form #input-div {
     box-sizing: border-box;
 }
 
+.bag {
+    position: relative;
+}
+
 #price-badge {
     background-color: red;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+
+.fa-shopping-bag {
+    padding: 5px;
 }
 
 .container {
@@ -135,60 +158,86 @@ div.parent-btn-link {
 
 }
 
-/* Cauroosel */
-.left-right {
-    bottom: 20px;
-    left: 90%;
-    position: absolute;
-    /* color: white; */
-}
-/*
-.right {
-    bottom: 20px;
-    right: 0px;
-    position: absolute;
-    /* color: white;*/
-} */
-
-.item img {
+.inner-row-picture {
     position: relative;
 }
 
-.carousel-indicators {
-    bottom: 0px;
-    left: 90%;
-    list-style: outside none none;
-    margin-left: -30%;
-    padding-left: 0;
+.inner-row-incspirition h3 {
+    top: 0;
+    right: 10%;
     position: absolute;
-    text-align: center;
-    width: 60%;
-    z-index: 15;
+
 }
 
-.carousel-indicators li {
-    background-color: rgba(0,0,0,0);
+.inner-row-incspirition a {
+    top: 70%;
+    right: 10%;
+    position: absolute;
+
+}
+
+.inner-row-incspirition *, .inner-row-incspirition a:hover {
+    color: white;
+}
+
+#black-shop-now * {
+    color: black;
+}
+
+/* CHEECK OUR PRODUCTS */
+#check-out-divider {
+    margin: 50px 0 25px;
+}
+
+.line-center {
+    width: 30px;
     border: 2px solid black;
-    border-radius: 0px;
-    cursor: pointer;
+}
+
+.circle {
+    font-size: 7px;
+    color: grey;
     display: inline-block;
-    height: 5px;
-    margin: 1px;
-    text-indent: -999px;
-    width: 12px;
 }
 
-.carousel-indicators .active {
-    background-color: black;
-    height: 5px;
-    margin: 0;
-    width: 15px;
+.line-through {
+    text-decoration: line-through;
+    color: grey;
+    font-size: 12px;
 }
 
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-    width: 70%;
-    margin: auto;
+.big-price {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.add-to-cart {
+    border: 1px solid grey;
+    width: 100%;
+    border-radius: 0;
+}
+
+.blog-date {
+    color: grey;
+}
+
+#blog {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.more-list {
+    list-style-type: square;
+    padding-left: 20px;
+
+}
+
+.more-list li {
+    padding: -30px;
+}
+
+#row-pictures {
+    margin-top: 20px;
 }
 
 * {

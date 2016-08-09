@@ -25,7 +25,7 @@ integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En
 	<body>
         <div class="container">
             {% block navbar %}
-                <div id="top_page" class="navbar navbar-default navbar-static-top accounts">
+                <div class="navbar navbar-default navbar-static-top accounts"  id="top_page1">
                     {# This is used in mobile view #}
                     <div class="navbar-header">
                         <a class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target=".account-collapse">
@@ -35,7 +35,7 @@ integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En
                         </a>
                     </div>
 
-                    <div class="navbar-collapse account-collapse collapse">
+                    <div class="navbar-collapse account-collapse collapse" id="top_page">
                         <div class="container-fluid">
                             <ul class="nav navbar-nav">
                                 <li>
@@ -132,7 +132,20 @@ integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En
                                                     <li><a>ENGINES</a></li>
                                                     <li><a>THRUSTERS</a></li>
                                                     <li><a>MINNING DRILS</a></li>
-                                                    <li><a>MORE</a></li>
+                                                    <li class="dropdown">
+                                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                            MORE <i class="fa fa-angle-down"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu more-list">
+                                                            <li><a href="#">ARMOR PLATES</a></li>
+                                                            <li><a href="#">ESCAPE PODS</a></li>
+                                                            <li><a href="#">LASER CANONS</a></li>
+                                                            <li><a href="#">BOOSTER ROCKETS</a></li>
+                                                            <li><a href="#">CAPTAIN CHAIRS</a></li>
+                                                            <li><a href="#">OXYGEN TANKS/SET</a></li>
+                                                            <li><a href="#">SPACE OTTER</a></li>
+                                                        </ul>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="nav-row">
@@ -155,10 +168,12 @@ integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En
 
 
                                             <a class="text-right" href="{% url 'basket:summary' %}">
-                                                <i class="fa fa-shopping-bag fa-3x" aria-hidden="true"></i>
-                                                <span class="badge" id="price-badge">
-                                                    {{ request.basket.num_items }}
-                                                </span>
+                                                <div class="bag">
+                                                    <i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>
+                                                    <span class="badge" id="price-badge">
+                                                        {{ request.basket.num_items }}
+                                                    </span>
+                                                </div>
                                                 SHOPPING CART
                                             </a>
                                         </li>
@@ -183,7 +198,7 @@ integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En
         <div class="container" id="info">
             <div class="row">
                 <div class="col-md-3">
-				    <p class="lead"><strong>SPACESHIP<br>E-COMMERCE<br>STORE</strong></p>
+				    <img src="{% static 'img/1.1/logo.png' %}" class="img-fluid">
                     <p>
                         Logancee is a premium magento theme. Best choice for your online store.
                         Let purchase it to enjoy now.

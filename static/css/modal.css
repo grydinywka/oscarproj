@@ -1,0 +1,62 @@
+#myModal {
+
+}
+
+.close {
+}
+
+.modal-header, .modal-footer {
+    border-width: 0;
+}
+
+.modal-content {
+    border-radius: 0px;
+}
+
+.modal-dialog {
+    width: 60%;
+}
+
+.fa-star {
+    color: yellow;
+}
+
+#in-stock {
+    color: green;
+}
+
+.grey-color {
+    color: grey;
+    margin-right: 30px;
+}
+
+#add-in-modal {
+    border: 1px solid black;
+    border-radius: 0px;
+    /* height: 38px;*/
+    background-color: white;
+    width: 100%;
+}
+
+.btn-minus-plus * {
+    border-width: 0;
+    background-color: white;
+}
+
+.btn-minus-plus {
+    border: 1px solid black;
+}
+
+#inner-btn-minus-plus {
+    border: 1px solid grey;
+}
+
+.bundle-row {
+    border-radius: 0px;
+}
+
+#required {
+    font-weight: 500;
+    color: red;
+    margin-bottom: 8px;
+}

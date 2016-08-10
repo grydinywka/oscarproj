@@ -205,4 +205,106 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close"><i class="fa fa-close fa-lg"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-md-5 img">
+
+            </div>
+            <div class="col-md-7">
+                <span class="h4"></span>
+                <p>Many desktop publishing packages and web page editors now
+                    use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+                    will uncover many web sites still in their infancy.</p>
+                <p class="stars">
+                    <i class="fa fa-star fa-lg"></i>
+                    <i class="fa fa-star fa-lg"></i>
+                    <i class="fa fa-star fa-lg"></i>
+                    <i class="fa fa-star fa-lg"></i>
+                    <i class="fa fa-star fa-lg"></i>
+                    <span>
+                        <a href="#">1 Review(s)</a> |
+                        <a href="#">Add Your Review</a>
+                    </span>
+                </p>
+                <p>
+                    Availability:<span id="in-stock">In Stock</span>
+                </p>
+                <p id="model-price">
+
+                </p>
+                <p>Price as configured: <span class="big-price">$0.00</span></p>
+                <p><span class="grey-color">SKU:</span> BP000</p>
+                <hr class="divider">
+
+                <form>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="bundle">OUR BUNDLE *</label>
+                            <select class="form-control bundle-row" id="bundle">
+                                <option>Choose a selection...</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <p class="small text-right" id="required">* Required Fields</p>
+                            <input type="text" class="form-control bundle-row" id="" value="1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="chb" >OUR CONDITIONS *</label>
+                                    <div>
+                                        <input type="checkbox" id="chb"> 1xFront Engine Shield - Jacket Colspay + $10.00
+                                    </div>
+                                    <div>
+                                        <input type="checkbox"> 1xFront Engine Shield - Crew Tee + $5.00
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group btn-minus-plus">
+                                <span class="input-group">
+                                    <button class="btn btn-secondary" type="button">
+                                        <i class="fa fa-minus fa-lg"></i>
+                                    </button>
+                                </span>
+                                <span class="input-group-addon" id="inner-btn-minus-plus">1</span>
+                                <span class="input-group">
+                                    <button class="btn btn-secondary" type="button">
+                                        <i class="fa fa-plus fa-lg"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button type="submit" class="btn" id="add-in-modal">ADD TO CART</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </div>
+      <!--<div class="modal-footer">-->
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      <!--</div>-->
+    </div>
+  </div>
+</div>
+
+
 {% endblock %}

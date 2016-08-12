@@ -17,6 +17,17 @@ function initBuyModal() {
     });
 }
 
+function increaseDecrease() {
+    var input_val = $('.increase-decrease input');
+    $('#decrease').click(function() {
+        input_val.val(input_val.val()-1);
+    });
+    $('#increase').click(function() {
+        input_val.val(parseInt(input_val.val(), 10)+1);
+    });
+}
+
 $(document).ready(function() {
     initBuyModal();
+    increaseDecrease();
 });

@@ -32,7 +32,7 @@ button.close {
 }
 
 .modal-dialog {
-    width: 70%;
+    width: 67%;
 }
 
 .fa-star {
@@ -60,6 +60,7 @@ button.close {
 #in-stock {
     font-size: 13px;
     font-weight: 600;
+    color: #333333;
 }
 
 .grey-color {
@@ -120,6 +121,10 @@ button.close {
 .second-colomn h4 {
     margin-top: 0;
     color: #231F20;
+}
+
+#descroption-sec-col {
+    font-size: 13px;
 }
 
 .img-modal img {

@@ -241,6 +241,10 @@ div.parent-btn-link {
     margin-top: 20px;
 }
 
+#search-id {
+    box-shadow: 0 0;
+}
+
 * {
-    border: 1px solid red;
+    border: 0px solid red;
 }

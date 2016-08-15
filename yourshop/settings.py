@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'frontend',
     'compressor',
+    'paypal',
+    'rest_framework',
+    'oscarapi',
 
     'widget_tweaks',
 
@@ -67,10 +70,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'oscar.apps.basket.middleware.BasketMiddleware',
+    # 'oscarapi.middleware.ApiBasketMiddleWare',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    # 'oscarapi.middleware.HeaderSessionMiddleware',
+    # 'oscarapi.middleware.ApiGatewayMiddleWare',
 )
 
-ROOT_URLCONF = 'fishshop.urls'
+ROOT_URLCONF = 'yourshop.urls'
 
 TEMPLATES = [
     {
@@ -98,7 +104,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'fishshop.wsgi.application'
+WSGI_APPLICATION = 'yourshop.wsgi.application'
 
 
 # Database
@@ -230,3 +236,29 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 
 OSCAR_SHOP_NAME = 'SPACESHIP E-COMMERCE STORE'
 OSCAR_DEFAULT_CURRENCY = 'GBP'
+OSCAR_ALLOW_ANON_CHECKOUT = True
+
+# smtp settings
+EMAIL_SUBJECT_PREFIX = '[Oscar sandbox] '
+
+ADMIN_EMAIL = 'grydinywka@gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net.'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'grud'
+EMAIL_HOST_PASSWORD = "grud_test_pwd1"
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+ADMINS = (
+    # ('serg', 'grydinywka@gmail.com'),   # email will be sent to your_email
+    ('serg2', 'sergeyi@univ.kiev.ua'),
+)
+
+MANAGERS = ADMINS
+
+# paypal settings
+
+PAYPAL_API_USERNAME = 'sergeyi_api1.univ.kiev.ua'
+PAYPAL_API_PASSWORD = 'LA7QDBGJPQQW739N'
+PAYPAL_API_SIGNATURE = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AAvpnc7hfM-bkoD131Yfax2MlRnV'
+

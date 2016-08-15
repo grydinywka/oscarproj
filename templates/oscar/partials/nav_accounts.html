@@ -3,7 +3,8 @@
 {% load i18n %}
 {% load static from staticfiles %}
 
-<div id="top_page" class="navbar navbar-default navbar-static-top accounts">
+{% block navbar %}
+<div class="navbar navbar-default navbar-static-top accounts"  id="top_page1">
     {# This is used in mobile view #}
     <div class="navbar-header">
         <a class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target=".account-collapse">
@@ -13,16 +14,16 @@
         </a>
     </div>
 
-    <div class="navbar-collapse account-collapse collapse">
+    <div class="navbar-collapse account-collapse collapse" id="top_page">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li>
                     <a href="#" class="contacts">
-                        <i class="icon-phone icon-large"></i> Call Us:+84 987 654 321 |
+                        <i class="fa fa-phone fa-lg" aria-hidden="true"></i> Call Us:+84 987 654 321 |
                     </a>
 
                     <a href="#" class="contacts">
-                        <i class="icon-envelope icon-large"></i> Email:support@spaceship.com
+                        <i class="fa fa-envelope fa-lg" aria-hidden="true"></i> Email:support@spaceship.com
                     </a>
                 </li>
             </ul>
@@ -49,15 +50,18 @@
                         {% endif %}
                     </li>
 
-                    <li><a id="logout_link" href="{% url 'customer:logout' %}"><i class="icon-signout"></i> {% trans "Logout" %} |</a></li>
+                    <li><a id="logout_link" href="{% url 'customer:logout' %}"><i class="icon-signout"></i> {% trans "Logout" %}</a></li>
                 {% else %}
-                    <li><a id="login_link" href="{% url 'customer:login' %}"><i class="icon-lock icon-large"></i>
- {% trans "Login" %}</a></li>
+                    <li><a id="login_link" href="{% url 'customer:login' %}">
+                        <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                        {% trans "Login" %}</a>
+                    </li>
                 {% endif %}
             </ul>
         </div>
     </div>
 </div>
+{% endblock %}
 
 <!--<div class="navbar navbar-default navbar-static-top accounts">-->
         <!--<div class="container-fluid">-->

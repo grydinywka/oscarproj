@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<form action="{% url 'search:search' %}" class="form-inline" role="form">
+    <div class="input-group" id="input-div">
+        <span class="input-group-addon"><i class="fa fa-search"
+                                           aria-hidden="true"></i></span>
+        <input type="search" class="form-control" id="search-id"
+               placeholder="Type to search" name="q">
+    </div>
+</form>

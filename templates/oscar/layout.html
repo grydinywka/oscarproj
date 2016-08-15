@@ -19,6 +19,7 @@
 
 {% block layout %}
     {# Top-horizontal bar with account, notifictions, dashboard links #}
+    <div class="container">
     {% include "partials/nav_accounts.html" %}
 
     {# Site logo/title, mini-basket, browse dropdown and searchbox #}
@@ -31,7 +32,7 @@
         {% block show_in_home %}
             {% include "catalogue/products.html" %}
         {% endblock %}
-
+    </div>
     {# Main content of page - other layout templates may override this block #}
     {% block content_wrapper %}
         <div class="container-fluid page">

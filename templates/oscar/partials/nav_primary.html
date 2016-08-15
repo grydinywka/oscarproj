@@ -2,117 +2,94 @@
 {% load category_tags %}
 {% load i18n %}
 
-<div class="navbar primary navbar-static-top navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header pull-right">
-            {# This is used in mobile view #}
-            <a class="navbar-toggle" data-toggle="collapse" data-target=".primary-collapse">
-                <span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </span>
-            </a>
-        </div>
+{% block subnavbar %}
+    <div class="navbar primary navbar-static-top navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header pull-right">
+                {# This is used in mobile view #}
+                <a class="navbar-toggle" data-toggle="collapse" data-target=".primary-collapse">
+                    <span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </span>
+                </a>
+            </div>
 
-        <a class="btn btn-default navbar-btn btn-cart navbar-right visible-xs-inline-block" href="{% url 'basket:summary' %}">
-            <i class="icon-shopping-cart"></i>
-            {% trans "Basket" %}
-            {% if not request.basket.is_empty %}
-                {% if request.basket.is_tax_known %}
-                    {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}
-                        Total: {{ total }}
-                    {% endblocktrans %}
-                {% else %}
-                    {% blocktrans with total=request.basket.total_excl_tax|currency:request.basket.currency %}
-                        Total: {{ total }}
-                    {% endblocktrans %}
+            <a class="btn btn-default navbar-btn btn-cart navbar-right visible-xs-inline-block" href="{% url 'basket:summary' %}">
+                <i class="icon-shopping-cart"></i>
+                {% trans "Basket" %}
+                {% if not request.basket.is_empty %}
+                    {% if request.basket.is_tax_known %}
+                        {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}
+                            Total: {{ total }}
+                        {% endblocktrans %}
+                    {% else %}
+                        {% blocktrans with total=request.basket.total_excl_tax|currency:request.basket.currency %}
+                            Total: {{ total }}
+                        {% endblocktrans %}
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        </a>
+            </a>
 
+            <div class="navbar-collapse primary-collapse collapse">
+                <div class="container-fluid">
+                    <div class="nav-row">
+                        <ul class="nav navbar-nav" id="sub-bar">
+                            <li class="nav-item col-lg-2 col-xs-12" id="spaceship-brand">
+                                <a class="navbar-brand text-left" href="{{ homepage_url }}">{{ shop_name }}</a>
+                            </li>
 
-        <!--<div class="navbar-collapse primary-collapse collapse">-->
-            <!--{% block nav_dropdown %}-->
-                <!--<ul id="browse" class="nav navbar-nav">-->
-                    <!--<li class="dropdown active {% if expand_dropdown %}open{% endif %}">-->
-                        <!--<a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %}>-->
-                            <!--{% trans "Browse store" %}-->
-                            <!--<b class="caret"></b>-->
-                        <!--</a>-->
-                        <!--<ul class="dropdown-menu" data-navigation="dropdown-menu">-->
-                            <!--{% category_tree depth=2 as tree_categories %}-->
-                            <!--<li><a tabindex="-1" href="{% url 'catalogue:index' %}">{% trans "All products" %}</a></li>-->
-                            <!--{% if tree_categories %}-->
-                                <!--<li class="divider"></li>-->
-                                <!--{% for tree_category, info in tree_categories %}-->
-                                    <!--{% if info.has_children %}-->
-                                        <!--<li class="dropdown-submenu">-->
-                                            <!--<a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>-->
-                                            <!--<ul class="dropdown-menu">-->
-                                            <!--{% else %}-->
-                                                <!--<li><a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a></li>-->
-                                            <!--{% endif %}-->
+                            <li class="nav-item col-lg-9 col-xs-12">
+                                <div class="nav-row">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active"><a>EJECTOR SEATS</a></li>
+                                        <li><a>SHIELDS</a></li>
+                                        <li><a>BLASTERS</a></li>
+                                        <li><a>ENGINES</a></li>
+                                        <li><a>THRUSTERS</a></li>
+                                        <li><a>MINNING DRILS</a></li>
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                MORE <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu more-list">
+                                                <li><a href="#">ARMOR PLATES</a></li>
+                                                <li><a href="#">ESCAPE PODS</a></li>
+                                                <li><a href="#">LASER CANONS</a></li>
+                                                <li><a href="#">BOOSTER ROCKETS</a></li>
+                                                <li><a href="#">CAPTAIN CHAIRS</a></li>
+                                                <li><a href="#">OXYGEN TANKS/SET</a></li>
+                                                <li><a href="#">SPACE OTTER</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="nav-row">
+                                    {% include "partials/search.html" %}
+                                </div>
+                            </li>
 
-                                            <!--{% for close in info.num_to_close %}-->
-                                                <!--</ul></li>-->
-                                            <!--{% endfor %}-->
-                                <!--{% endfor %}-->
-                            <!--{% endif %}-->
-                            <!--<li class="divider"></li>-->
-                            <!--{% block nav_dropdown_extra_items %}-->
-                                <!--<li><a href="{% url 'offer:list' %}">{% trans "Offers" %}</a></li>-->
-                            <!--{% endblock %}-->
-                        <!--</ul>-->
-                    <!--</li>-->
-                    <!--{% block nav_extra %}-->
-                    <!--{% endblock %}-->
-                <!--</ul>-->
-            <!--{% endblock %}-->
-            <!--{% include "partials/search.html" %}-->
-        <!--</div>&lt;!&ndash; /navbar-collapse &ndash;&gt;-->
-        <div class="navbar-collapse primary-collapse collapse">
-            <div class="container-fluid">
-                <div class="nav-row">
-                    <ul class="nav navbar-nav" id="sub-bar">
-                        <li class="nav-item col-md-2 col-xs-12" id="spaceship-brand">
-                            <a class="navbar-brand text-left" href="{{ homepage_url }}">{{ shop_name }}</a><small> {{ shop_tagline }}</small>
-                        </li>
-
-                        <li class="nav-item col-md-9 col-xs-12">
-                            <div class="nav-row">
-                                <ul class="nav navbar-nav">
-                                    <li class="active"><a>EJECTOR SEATS</a></li>
-                                    <li><a>SHIELDS</a></li>
-                                    <li><a>BLASTERS</a></li>
-                                    <li><a>ENGINES</a></li>
-                                    <li><a>THRUSTERS</a></li>
-                                    <li><a>MINNING DRILS</a></li>
-                                    <li><a>MORE</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-row">
-                                        {% include "partials/search.html" %}
-                            </div>
-                        </li>
-
-                        <li class="nav-item col-md-1 col-xs-12" id="shopping-cart">
+                            <li class="nav-item col-lg-1 col-xs-12" id="shopping-cart">
 
 
 
-                            <a class="text-right" href="{% url 'basket:summary' %}">
-                                <i class="fa fa-shopping-bag fa-3x" aria-hidden="true"></i>
-                                <span class="badge" id="price-badge">
-                                    {{ request.basket.num_items }}
-                                </span>
-                                SHOPPING CART
-                            </a>
-                        </li>
+                                <a class="text-right" href="{% url 'basket:summary' %}">
+                                    <div class="bag">
+                                        <i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>
+                                        <span class="badge" id="price-badge">
+                                            {{ request.basket.num_items }}
+                                        </span>
+                                    </div>
+                                    SHOPPING CART
+                                </a>
+                            </li>
 
-                    </ul>
+                        </ul>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div><!-- /navbar -->
+    </div><!-- /navbar -->
+{% endblock %}

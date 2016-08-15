@@ -18,11 +18,16 @@ from oscar.app import application
 from django.conf import settings
 from django.views.generic import RedirectView, TemplateView
 from frontend.views import FrontendView
+from oscarapi.app import application as api
 
 urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^checkout/paypal/', include('paypal.express.urls')),
+    url(r'^api/', include(api.urls)),
+    url(r'^api/logout', include(api.urls)),
 
     url(r'^front-end/(?P<pk>\d+)?/?$', FrontendView.as_view(), name='front-end'),
     url(r'^test/$', TemplateView.as_view(template_name='front_end/test.html'), name='test'),

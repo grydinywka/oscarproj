@@ -242,10 +242,10 @@ OSCAR_ALLOW_ANON_CHECKOUT = True
 EMAIL_SUBJECT_PREFIX = '[Oscar sandbox] '
 
 ADMIN_EMAIL = 'grydinywka@gmail.com'
-EMAIL_HOST = 'smtp.sendgrid.net.'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'grud'
-EMAIL_HOST_PASSWORD = "grud_test_pwd1"
+EMAIL_HOST = ''
+EMAIL_PORT = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
